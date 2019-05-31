@@ -20,24 +20,28 @@ public class ToggleSelector<T> {
     public T toggle() {
         if (isBinaryChoice0Selected) {
             isBinaryChoice0Selected = false;
-            return binaryChoice0;
+            return binaryChoice1;
         } else {
             isBinaryChoice0Selected = true;
-            return binaryChoice1;
+            return binaryChoice0;
         }
+    }
+
+    public boolean isBinaryChoice0Selected() {
+        return isBinaryChoice0Selected;
     }
 
     public T getCurrentState() {
         return isBinaryChoice0Selected ? binaryChoice0 : binaryChoice1;
     }
 
-    public T setToBinayChoice0() {
+    public T setToBinaryChoice0() {
         isBinaryChoice0Selected = true;
         return binaryChoice0;
     }
 
-    public T setToBinayChoice1() {
-        isBinaryChoice0Selected = true;
+    public T setToBinaryChoice1() {
+        isBinaryChoice0Selected = false;
         return binaryChoice1;
     }
 
