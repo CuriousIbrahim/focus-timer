@@ -31,6 +31,14 @@ public class ToggleTimer {
         countDownTimer.start();
     }
 
+    public void stop() {
+        countDownTimer.cancel();
+    }
+
+    public void setNewTime(long milliseconds) {
+        this.millisLeft = milliseconds;
+    }
+
 
     class MyCountDownTimer extends CountDownTimer {
 
