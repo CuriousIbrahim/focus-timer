@@ -33,12 +33,14 @@ public class ToggleClickListener implements View.OnClickListener {
     }
 
     public void toggleState0() {
+        onState0 = true;
+        textView.setText(toggleText0);
+    }
+
+    public void toggleState1() {
         onState0 = false;
         textView.setText(toggleText1);
     }
 
-    public void toggleState1() {
-        onState0 = true;
-        textView.setText(toggleText0);
-    }
+
 }
