@@ -16,7 +16,9 @@ public class MainActivity extends AppCompatActivity {
     private static final long DEFAULT_LONG_REST_TIME = 30 * 60 * 1000;
 
     TextView timeTextView;
+
     Button startAndStopToggle;
+    Button stop;
 
     ToggleTimer timer;
 
@@ -27,10 +29,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         timeTextView = findViewById(R.id.time);
+
         startAndStopToggle = findViewById(R.id.startAndStopToggle);
+        stop = findViewById(R.id.stop);
 
         timer = new ToggleTimer(DEFAULT_WORK_TIME, 1000, timeTextView);
-
 
         View.OnClickListener listener = new ToggleWithTimerListener(
                 startAndStopToggle, "Resume", "Pause", timer);
