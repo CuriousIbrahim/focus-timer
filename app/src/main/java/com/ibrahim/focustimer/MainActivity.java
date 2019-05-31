@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
                 timer.stop();
                 timer.setNewTime(DEFAULT_WORK_TIME);
                 timeTextView.setText(Time.millisToString(DEFAULT_WORK_TIME));
-                ((ToggleWithTimerListener) resumeAndPauseToggleListener).toggle();
+                ((ToggleWithTimerListener) resumeAndPauseToggleListener).setToPause();
             }
         });
     }
