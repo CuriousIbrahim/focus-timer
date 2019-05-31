@@ -23,6 +23,20 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
+
+        timeTextView = findViewById(R.id.time);
+        startAndStopToggle = findViewById(R.id.startAndStopToggle);
+
+        timer = new ToggleTimer(DEFAULT_WORK_TIME, 1000, timeTextView);
+
+
+        View.OnClickListener listener = new ToggleWithTimerListener(
+                startAndStopToggle, "Resume", "Pause", timer);
+
+        startAndStopToggle.setOnClickListener(listener);
     }
+
+
 }
