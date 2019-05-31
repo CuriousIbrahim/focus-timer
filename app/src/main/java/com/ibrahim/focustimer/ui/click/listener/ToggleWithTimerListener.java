@@ -9,14 +9,14 @@ import com.ibrahim.focustimer.util.ToggleTimer;
 
 public class ToggleWithTimerListener implements View.OnClickListener {
 
-    ToggleTimer timer;
+    private ToggleTimer timer;
     private TextView textView;
 
     private String resumeText;
     private String pauseText;
 
     // State 0 = resume; State 1 = pause
-    ToggleSelector<String> toggleSelector;
+    private ToggleSelector<String> toggleSelector;
 
     public ToggleWithTimerListener(TextView textView, String resumeText,
                                    String pauseText, ToggleTimer timer) {
