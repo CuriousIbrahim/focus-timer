@@ -21,6 +21,10 @@ public class ToggleClickListener implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
+        toggle();
+    }
+
+    public void toggle() {
         if (onState0) {
             onState0 = false;
             textView.setText(toggleText1);
@@ -28,6 +32,5 @@ public class ToggleClickListener implements View.OnClickListener {
             onState0 = true;
             textView.setText(toggleText0);
         }
-
     }
 }
