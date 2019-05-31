@@ -17,12 +17,6 @@ public class ToggleTimer {
         this.textView = textView;
     }
 
-    private String millisToString(long mills) {
-        int minutes = (int) (mills / (1000 * 60)) % 60;
-        int seconds = (int) (mills / 1000) % 60;
-
-        return String.format("%d:%d", minutes, seconds);
-    }
 
     public void start() {
         countDownTimer.start();
@@ -47,7 +41,7 @@ public class ToggleTimer {
         @Override
         public void onTick(long millisUntilFinished) {
             millisLeft = millisUntilFinished;
-            String time = millisToString(millisUntilFinished);
+            String time = Time.millisToString(millisUntilFinished);
             textView.setText(time);
         }
 
