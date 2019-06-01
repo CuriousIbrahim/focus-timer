@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import com.ibrahim.focustimer.ui.click.listener.ToggleWithTimerListener;
 import com.ibrahim.focustimer.util.Time;
-import com.ibrahim.focustimer.util.ToggleTimer;
+import com.ibrahim.focustimer.ui.util.TimerTextViewToggle;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     Button startAndStopToggle;
     Button stop;
 
-    ToggleTimer timer;
+    TimerTextViewToggle timer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         startAndStopToggle = findViewById(R.id.startAndStopToggle);
         stop = findViewById(R.id.stop);
 
-        timer = new ToggleTimer(DEFAULT_WORK_TIME, 1000, timeTextView);
+        timer = new TimerTextViewToggle(DEFAULT_WORK_TIME, 1000, timeTextView);
 
         final View.OnClickListener resumeAndPauseToggleListener = new ToggleWithTimerListener(
                 startAndStopToggle, "Resume", "Pause", timer);

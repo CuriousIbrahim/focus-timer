@@ -1,15 +1,14 @@
 package com.ibrahim.focustimer.ui.click.listener;
 
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import com.ibrahim.focustimer.util.ToggleSelector;
-import com.ibrahim.focustimer.util.ToggleTimer;
+import com.ibrahim.focustimer.ui.util.TimerTextViewToggle;
 
 public class ToggleWithTimerListener implements View.OnClickListener {
 
-    private ToggleTimer timer;
+    private TimerTextViewToggle timer;
     private TextView textView;
 
     private String resumeText;
@@ -19,7 +18,7 @@ public class ToggleWithTimerListener implements View.OnClickListener {
     private ToggleSelector<String> toggleSelector;
 
     public ToggleWithTimerListener(TextView textView, String resumeText,
-                                   String pauseText, ToggleTimer timer) {
+                                   String pauseText, TimerTextViewToggle timer) {
         this.textView = textView;
 
         this.resumeText = resumeText;

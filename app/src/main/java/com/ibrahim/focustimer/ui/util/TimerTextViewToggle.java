@@ -1,16 +1,18 @@
-package com.ibrahim.focustimer.util;
+package com.ibrahim.focustimer.ui.util;
 
 import android.os.CountDownTimer;
 import android.widget.TextView;
 
-public class ToggleTimer {
+import com.ibrahim.focustimer.util.Time;
+
+public class TimerTextViewToggle {
 
     private TextView textView;
     private CountDownTimer countDownTimer;
     private long millisLeft;
     private long countDownInterval;
 
-    public ToggleTimer(long millisInFuture, long countDownInterval, TextView textView) {
+    public TimerTextViewToggle(long millisInFuture, long countDownInterval, TextView textView) {
         this.countDownTimer = new MyCountDownTimer(millisInFuture, countDownInterval);
         this.millisLeft = millisInFuture;
         this.countDownInterval = countDownInterval;
