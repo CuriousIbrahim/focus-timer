@@ -1,12 +1,12 @@
 package com.ibrahim.focustimer.data;
 
 import android.os.CountDownTimer;
-import android.util.Log;
 
 public abstract class ExtendedCountDownTimer {
 
     private CountDownTimer countDownTimer;
 
+    private long originalMillisInFuture;
     private long millisLeft;
     private long countDownInterval;
 
@@ -14,6 +14,7 @@ public abstract class ExtendedCountDownTimer {
     public ExtendedCountDownTimer(long millisInFuture, long countDownInterval) {
         countDownTimer = new MyCountDownTimer(millisInFuture, countDownInterval);
         millisLeft = millisInFuture;
+        originalMillisInFuture = millisLeft;
         this.countDownInterval = countDownInterval;
     }
 
@@ -30,8 +31,18 @@ public abstract class ExtendedCountDownTimer {
         countDownTimer.cancel();
     }
 
+    public void stop() {
+        countDownTimer.cancel();
+        countDownTimer = new MyCountDownTimer(originalMillisInFuture, countDownInterval);
+        millisLeft = originalMillisInFuture;
+    }
+
     public void setMillisLeft(long millisLeft) {
         this.millisLeft = millisLeft;
+    }
+
+    public long getMillisLeft() {
+        return millisLeft;
     }
 
     public abstract void onMyTick(long millisUntilFinished);
