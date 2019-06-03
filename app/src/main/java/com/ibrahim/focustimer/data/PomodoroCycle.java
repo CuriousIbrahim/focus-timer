@@ -1,4 +1,4 @@
-package com.ibrahim.focustimer;
+package com.ibrahim.focustimer.data;
 
 public class PomodoroCycle {
 
