@@ -1,9 +1,9 @@
 package com.ibrahim.focustimer.util;
 
-public class ToggleSelector<T> {
+class ToggleSelector<T> {
 
-    private T binaryChoice0;
-    private T binaryChoice1;
+    private final T binaryChoice0;
+    private final T binaryChoice1;
 
     private boolean isBinaryChoice0Selected;
 

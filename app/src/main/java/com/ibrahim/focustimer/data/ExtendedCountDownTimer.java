@@ -6,9 +6,9 @@ public abstract class ExtendedCountDownTimer {
 
     private CountDownTimer countDownTimer;
 
-    private long originalMillisInFuture;
+    private final long originalMillisInFuture;
     private long millisLeft;
-    private long countDownInterval;
+    private final long countDownInterval;
 
 
     public ExtendedCountDownTimer(long millisInFuture, long countDownInterval) {
@@ -37,7 +37,7 @@ public abstract class ExtendedCountDownTimer {
         millisLeft = originalMillisInFuture;
     }
 
-    public void setMillisLeft(long millisLeft) {
+    private void setMillisLeft(long millisLeft) {
         this.millisLeft = millisLeft;
     }
 

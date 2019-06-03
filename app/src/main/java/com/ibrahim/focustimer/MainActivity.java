@@ -9,12 +9,12 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView timeTextView;
+    private TextView timeTextView;
 
-    Button startAndStopToggle;
-    Button stop;
+    private Button startAndStopToggle;
+    private Button stop;
 
-    MainActivityViewModel viewModel;
+    private MainActivityViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,12 +41,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        startAndStopToggle.setOnClickListener((a) -> {
-            viewModel.toggleTime();
-        });
+        startAndStopToggle.setOnClickListener((a) -> viewModel.toggleTime());
 
-        stop.setOnClickListener((a) -> {
-            viewModel.stopTime();
-        });
+        stop.setOnClickListener((a) -> viewModel.stopTime());
     }
 }

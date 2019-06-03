@@ -10,12 +10,14 @@ import com.ibrahim.focustimer.util.TimeUtil;
 
 public class MainActivityViewModel extends ViewModel {
 
-    private ExtendedCountDownTimer workCountDownTimer, shortBreakCountDownTimer, longBreakCountDownTimer;
+    private final ExtendedCountDownTimer workCountDownTimer;
+    private final ExtendedCountDownTimer shortBreakCountDownTimer;
+    private final ExtendedCountDownTimer longBreakCountDownTimer;
 
     private MutableLiveData<String> timeLeft;
     private MutableLiveData<Boolean> onResume;
 
-    PomodoroCycle pomodoroCycle;
+    private final PomodoroCycle pomodoroCycle;
 
     private static long time;
 
@@ -98,14 +100,14 @@ public class MainActivityViewModel extends ViewModel {
         onResume.setValue(false);
     }
 
-    public void pauseTime() {
+    private void pauseTime() {
         workCountDownTimer.pause();
         onResume.setValue(false);
     }
 
     class MyCountDownTimer extends ExtendedCountDownTimer {
 
-        public MyCountDownTimer(long millisInFuture, long countDownInterval) {
+        MyCountDownTimer(long millisInFuture, long countDownInterval) {
             super(millisInFuture, countDownInterval);
         }
 

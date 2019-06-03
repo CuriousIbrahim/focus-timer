@@ -2,7 +2,7 @@ package com.ibrahim.focustimer.util;
 
 public class TimeUtil {
 
-    public static final String millisToString(long millis) {
+    public static String millisToString(long millis) {
 
         int minutes = (int) (millis / (1000 * 60)) % 60;
         int seconds = (int) (millis / 1000) % 60;
