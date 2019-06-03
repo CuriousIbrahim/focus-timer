@@ -45,6 +45,11 @@ public abstract class ExtendedCountDownTimer {
         return millisLeft;
     }
 
+    public void reset() {
+        countDownTimer.cancel();
+        countDownTimer = new MyCountDownTimer(originalMillisInFuture, countDownInterval);
+    }
+
     public abstract void onMyTick(long millisUntilFinished);
 
     public abstract void onMyFinish();
