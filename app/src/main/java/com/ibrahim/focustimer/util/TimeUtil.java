@@ -1,6 +1,6 @@
 package com.ibrahim.focustimer.util;
 
-public class Time {
+public class TimeUtil {
 
     public static final String millisToString(long millis) {
 
