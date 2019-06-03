@@ -45,19 +45,14 @@ public class MainActivityViewModel extends ViewModel {
     public LiveData<Boolean> getOnResume() {
         if (onResume == null) {
             onResume = new MutableLiveData<>();
-            setOnResume();
+            onResume.setValue(false);
         }
         return onResume;
     }
 
     private void loadTime() {
         started = false;
-        countDownTimer = new MyCountDownTimer(C.DEFAULT_WORK_TIME, 1000);
-        timeLeft.setValue(TimeUtil.millisToString(C.DEFAULT_WORK_TIME));
-    }
-
-    private void setOnResume() {
-        onResume.setValue(false);
+        timeLeft.setValue(TimeUtil.millisToString(time));
     }
 
     public void toggleTime() {
@@ -98,13 +93,13 @@ public class MainActivityViewModel extends ViewModel {
     }
 
     public void stopTime() {
-        countDownTimer.stop();
-        timeLeft.setValue(TimeUtil.millisToString(countDownTimer.getMillisLeft()));
+        getCountDownTimer().reset();
+        timeLeft.setValue(TimeUtil.millisToString(getCountDownTimer().getMillisLeft()));
         onResume.setValue(false);
     }
 
     public void pauseTime() {
-        countDownTimer.pause();
+        workCountDownTimer.pause();
         onResume.setValue(false);
     }
 
@@ -121,7 +116,11 @@ public class MainActivityViewModel extends ViewModel {
 
         @Override
         public void onMyFinish() {
-
+            getCountDownTimer().reset();
+            pomodoroCycle.next();
+            time = getTimeBasedOnPomodoroState();
+            timeLeft.setValue(TimeUtil.millisToString(time));
+            onResume.setValue(false);
         }
     }
 
