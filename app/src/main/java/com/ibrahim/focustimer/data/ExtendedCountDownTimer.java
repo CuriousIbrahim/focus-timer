@@ -14,7 +14,7 @@ public abstract class ExtendedCountDownTimer {
     public ExtendedCountDownTimer(long millisInFuture, long countDownInterval) {
         countDownTimer = new MyCountDownTimer(millisInFuture, countDownInterval);
         millisLeft = millisInFuture;
-        originalMillisInFuture = millisLeft;
+        originalMillisInFuture = millisInFuture;
         this.countDownInterval = countDownInterval;
     }
 
@@ -48,6 +48,7 @@ public abstract class ExtendedCountDownTimer {
     public void reset() {
         countDownTimer.cancel();
         countDownTimer = new MyCountDownTimer(originalMillisInFuture, countDownInterval);
+        millisLeft = originalMillisInFuture;
     }
 
     public abstract void onMyTick(long millisUntilFinished);
