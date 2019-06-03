@@ -16,18 +16,19 @@ public class PomodoroCycle {
     }
 
     public void next() {
+
         if (currentState == WORK_STATE) {
-            if (workCount > 4) {
-                workCount = 0;
+            workCount++;
+            if (workCount == 4) {
                 currentState = LONG_BREAK_STATE;
+                workCount = 0;
             } else {
                 currentState = SHORT_BREAK_STATE;
             }
         } else if (currentState == SHORT_BREAK_STATE) {
-            workCount++;
             currentState = WORK_STATE;
-        } else {
-            currentState = LONG_BREAK_STATE;
+        } else if (currentState == LONG_BREAK_STATE) {
+            currentState = WORK_STATE;
         }
     }
 
