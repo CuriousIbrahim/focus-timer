@@ -5,16 +5,32 @@ import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 
 import com.ibrahim.focustimer.data.ExtendedCountDownTimer;
+import com.ibrahim.focustimer.data.PomodoroCycle;
 import com.ibrahim.focustimer.util.TimeUtil;
 
 public class MainActivityViewModel extends ViewModel {
 
-    private ExtendedCountDownTimer countDownTimer;
+    private ExtendedCountDownTimer workCountDownTimer, shortBreakCountDownTimer, longBreakCountDownTimer;
 
     private MutableLiveData<String> timeLeft;
     private MutableLiveData<Boolean> onResume;
 
+    PomodoroCycle pomodoroCycle;
+
+    private static long time;
+
     private boolean started;
+
+    public MainActivityViewModel() {
+        pomodoroCycle = new PomodoroCycle();
+
+        workCountDownTimer = new MyCountDownTimer(C.DEFAULT_WORK_TIME, C.SECOND);
+        shortBreakCountDownTimer = new MyCountDownTimer(C.DEFAULT_SHORT_REST_TIME, C.SECOND);
+        longBreakCountDownTimer = new MyCountDownTimer(C.DEFAULT_LONG_REST_TIME, C.SECOND);
+
+        time = C.DEFAULT_WORK_TIME;
+
+    }
 
     public LiveData<String> getTimeLeft() {
 
@@ -31,7 +47,6 @@ public class MainActivityViewModel extends ViewModel {
             onResume = new MutableLiveData<>();
             setOnResume();
         }
-
         return onResume;
     }
 
@@ -57,11 +72,29 @@ public class MainActivityViewModel extends ViewModel {
 
         onResume.setValue(true);
         if (!started) {
-            countDownTimer.start();
+            getCountDownTimer().start();
             started = true;
         } else {
-            countDownTimer.resume();
+            getCountDownTimer().resume();
         }
+    }
+
+    private ExtendedCountDownTimer getCountDownTimer() {
+        if (pomodoroCycle.isWorkState())
+            return workCountDownTimer;
+        else if (pomodoroCycle.isShortBreakState())
+            return shortBreakCountDownTimer;
+        else
+            return longBreakCountDownTimer;
+    }
+
+    private long getTimeBasedOnPomodoroState() {
+        if (pomodoroCycle.isWorkState())
+            return C.DEFAULT_WORK_TIME;
+        else if (pomodoroCycle.isShortBreakState())
+            return C.DEFAULT_SHORT_REST_TIME;
+        else
+            return C.DEFAULT_LONG_REST_TIME;
     }
 
     public void stopTime() {
