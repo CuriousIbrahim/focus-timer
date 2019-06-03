@@ -29,9 +29,9 @@ public abstract class ExtendedCountDownTimer {
         countDownTimer.cancel();
     }
 
-    abstract void onTick(long millisUntilFinished);
+    public abstract void onTick(long millisUntilFinished);
 
-    abstract void onFinish();
+    public abstract void onFinish();
 
 
     class MyCountDownTimer extends CountDownTimer {
