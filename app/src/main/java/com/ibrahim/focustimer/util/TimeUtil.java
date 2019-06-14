@@ -2,6 +2,9 @@ package com.ibrahim.focustimer.util;
 
 public class TimeUtil {
 
+    // TODO: This is the maximum, try and increase it
+    public static final long MAX_MILLIS_TO_STRING_CONVERSION = 3599000;
+
     public static String millisToString(long millis) {
 
         int minutes = (int) (millis / (1000 * 60)) % 60;
