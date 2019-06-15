@@ -5,7 +5,7 @@ import com.ibrahim.focustimer.util.TimeUtil;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
-public class TImeUtilTest {
+public class TimeUtilTest {
 
     public static class MillisToStringTests {
 
