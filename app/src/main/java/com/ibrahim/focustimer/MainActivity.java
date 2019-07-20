@@ -7,7 +7,12 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.ibrahim.focustimer.notification.NotificationManager;
+
+
 public class MainActivity extends AppCompatActivity {
+
+    private static final String CHANNEL_ID = "Timer";
 
     private TextView timeTextView;
 
@@ -16,9 +21,17 @@ public class MainActivity extends AppCompatActivity {
 
     private MainActivityViewModel viewModel;
 
+    NotificationManager notificationManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        notificationManager = new NotificationManager(this);
+
+        notificationManager.createNotificationChannel();
+
+        notificationManager.showNotification();
 
         setContentView(R.layout.activity_main);
 
