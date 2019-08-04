@@ -4,6 +4,8 @@ import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 
+import com.ibrahim.focustimer.constant.C;
+import com.ibrahim.focustimer.constant.State;
 import com.ibrahim.focustimer.data.ExtendedCountDownTimer;
 import com.ibrahim.focustimer.data.PomodoroCycle;
 import com.ibrahim.focustimer.util.TimeUtil;
@@ -50,6 +52,20 @@ public class MainActivityViewModel extends ViewModel {
             onResume.setValue(false);
         }
         return onResume;
+    }
+
+    public LiveData<State> getState() {
+        MutableLiveData<State> state = new MutableLiveData<>();
+
+        if (pomodoroCycle.isWorkState()) {
+            state.setValue(State.WORK);
+        } else if (pomodoroCycle.isShortBreakState()) {
+            state.setValue(State.SHORT_BREAK);
+        } else if (pomodoroCycle.isLongBreakState()) {
+            state.setValue(State.LONG_BREAK);
+        }
+
+        return state;
     }
 
     private void loadTime() {

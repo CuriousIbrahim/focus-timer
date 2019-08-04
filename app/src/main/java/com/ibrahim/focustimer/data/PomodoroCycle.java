@@ -1,46 +1,44 @@
 package com.ibrahim.focustimer.data;
 
+import com.ibrahim.focustimer.constant.State;
+
 public class PomodoroCycle {
 
-    private static final int WORK_STATE = 0;
-    private static final int SHORT_BREAK_STATE = 1;
-    private static final int LONG_BREAK_STATE = 2;
-
-    private int currentState;
+    private State currentState;
 
     private int workCount;
 
     public PomodoroCycle() {
-        currentState = WORK_STATE;
+        currentState = State.WORK;
         workCount = 0;
     }
 
     public void next() {
 
-        if (currentState == WORK_STATE) {
+        if (currentState == State.WORK) {
             workCount++;
             if (workCount == 4) {
-                currentState = LONG_BREAK_STATE;
+                currentState = State.LONG_BREAK;
                 workCount = 0;
             } else {
-                currentState = SHORT_BREAK_STATE;
+                currentState = State.SHORT_BREAK;
             }
-        } else if (currentState == SHORT_BREAK_STATE) {
-            currentState = WORK_STATE;
-        } else if (currentState == LONG_BREAK_STATE) {
-            currentState = WORK_STATE;
+        } else if (currentState == State.SHORT_BREAK) {
+            currentState = State.WORK;
+        } else if (currentState == State.LONG_BREAK) {
+            currentState = State.WORK;
         }
     }
 
     public boolean isWorkState() {
-        return currentState == WORK_STATE;
+        return currentState == State.WORK;
     }
 
     public boolean isShortBreakState() {
-        return currentState == SHORT_BREAK_STATE;
+        return currentState == State.SHORT_BREAK;
     }
 
     public boolean isLongBreakState() {
-        return currentState == LONG_BREAK_STATE;
+        return currentState == State.LONG_BREAK;
     }
 }
