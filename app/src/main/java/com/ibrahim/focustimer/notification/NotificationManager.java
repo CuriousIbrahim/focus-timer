@@ -19,6 +19,13 @@ public class NotificationManager {
     public NotificationManager(Context context) {
         this.context = context;
         manager = NotificationManagerCompat.from(context);
+
+        builder = new NotificationCompat.Builder(this.context, CHANNEL_ID)
+                .setContentTitle("Timer")
+                .setContentText("25:00")
+//                .setContentText(context.getString(R.string.))
+                .setSmallIcon(R.drawable.ic_launcher_foreground)
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
     }
 
     public void showNotification() {
@@ -29,15 +36,6 @@ public class NotificationManager {
         return getNotificationBuilder().build();
     }
 
-    private NotificationCompat.Builder getNotificationBuilder() {
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this.context, CHANNEL_ID)
-                .setContentTitle("Timer")
-                .setContentText("25:00")
-                .setSmallIcon(R.drawable.ic_launcher_foreground)
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
-
-        return builder;
-    }
 
     public void createNotificationChannel() {
         // Create the NotificationChannel, but only on API 26+ because
