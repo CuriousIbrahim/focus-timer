@@ -12,8 +12,6 @@ import com.ibrahim.focustimer.notification.NotificationManager;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String CHANNEL_ID = "Timer";
-
     private TextView timeTextView;
 
     private Button startAndStopToggle;
@@ -44,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         viewModel.getTimeLeft().observe(this, timeLeft -> {
             Log.d("MainActivity", String.format("Time left: %s", timeLeft));
             timeTextView.setText(timeLeft);
+            notificationManager.updateNotification(timeLeft);
         });
 
         viewModel.getOnResume().observe(this, (onResume) -> {

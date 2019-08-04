@@ -15,6 +15,7 @@ public class NotificationManager {
 
     private Context context;
     private NotificationManagerCompat manager;
+    private NotificationCompat.Builder builder;
 
     public NotificationManager(Context context) {
         this.context = context;
@@ -32,8 +33,16 @@ public class NotificationManager {
         manager.notify(123, getNotification());
     }
 
+    public void updateNotification(String newText) {
+
+        builder.setContentText(newText);
+
+        manager.notify(123, getNotification());
+
+    }
+
     private Notification getNotification() {
-        return getNotificationBuilder().build();
+        return this.builder.build();
     }
 
 
