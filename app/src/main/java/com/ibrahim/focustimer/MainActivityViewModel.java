@@ -20,6 +20,8 @@ public class MainActivityViewModel extends ViewModel {
     private MutableLiveData<Boolean> onResume;
     private MutableLiveData<Boolean> waitingOnUserToContinue;
 
+    private MutableLiveData<State> state;
+
     private final PomodoroCycle pomodoroCycle;
 
     private static long time;
@@ -68,8 +70,13 @@ public class MainActivityViewModel extends ViewModel {
     }
 
     public LiveData<State> getState() {
-        MutableLiveData<State> state = new MutableLiveData<>();
+        if (state == null)
+            state = new MutableLiveData<>();
 
+        return state;
+    }
+
+    private void updateState() {
         if (pomodoroCycle.isWorkState()) {
             state.setValue(State.WORK);
         } else if (pomodoroCycle.isShortBreakState()) {
@@ -77,8 +84,6 @@ public class MainActivityViewModel extends ViewModel {
         } else if (pomodoroCycle.isLongBreakState()) {
             state.setValue(State.LONG_BREAK);
         }
-
-        return state;
     }
 
     private void loadTime() {
@@ -153,6 +158,7 @@ public class MainActivityViewModel extends ViewModel {
             timeLeft.setValue(TimeUtil.millisToString(time));
             onResume.setValue(false);
             waitingOnUserToContinue.setValue(true);
+            updateState();
         }
     }
 
