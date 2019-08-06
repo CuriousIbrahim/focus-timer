@@ -6,20 +6,22 @@ import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 
+import com.ibrahim.focustimer.R;
+
 public class NotificationManager {
 
     private static final String CHANNEL_ID = "Timer";
 
     private Context context;
     private NotificationManagerCompat manager;
+    private NotificationCompat.Builder builder;
 
     public NotificationManager(Context context) {
         this.context = context;
         manager = NotificationManagerCompat.from(context);
         createNotificationChannel();
+        builder = getNotificationBuilder();
     }
-
-
 
     public void createNotificationChannel() {
         // Create the NotificationChannel, but only on API 26+ because
@@ -35,5 +37,14 @@ public class NotificationManager {
             android.app.NotificationManager notificationManager = context.getSystemService(android.app.NotificationManager.class);
             notificationManager.createNotificationChannel(channel);
         }
+    }
+
+    private NotificationCompat.Builder getNotificationBuilder() {
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
+                .setContentTitle("Focus Timer")
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setSmallIcon(R.drawable.ic_launcher_foreground);
+
+        return builder;
     }
 }
