@@ -27,9 +27,8 @@ public class MainActivity extends AppCompatActivity {
 
         notificationManager = new NotificationManager(this);
 
-        notificationManager.createNotificationChannel();
 
-        notificationManager.showNotification();
+//        notificationManager.showNotification();
 
         setContentView(R.layout.activity_main);
 
@@ -42,7 +41,11 @@ public class MainActivity extends AppCompatActivity {
         viewModel.getTimeLeft().observe(this, timeLeft -> {
             Log.d("MainActivity", String.format("Time left: %s", timeLeft));
             timeTextView.setText(timeLeft);
-            notificationManager.updateNotification(timeLeft);
+            notificationManager.notify(timeLeft);
+        });
+
+        viewModel.getState().observe(this, state -> {
+            notificationManager.setState(state);
         });
 
         viewModel.getOnResume().observe(this, (onResume) -> {

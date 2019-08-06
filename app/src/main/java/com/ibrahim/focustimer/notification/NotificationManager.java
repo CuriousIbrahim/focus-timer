@@ -1,13 +1,12 @@
 package com.ibrahim.focustimer.notification;
 
-import android.app.Notification;
 import android.app.NotificationChannel;
 import android.content.Context;
 import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 
-import com.ibrahim.focustimer.R;
+import com.ibrahim.focustimer.constant.State;
 
 public class NotificationManager {
 
@@ -15,34 +14,41 @@ public class NotificationManager {
 
     private Context context;
     private NotificationManagerCompat manager;
-    private NotificationCompat.Builder builder;
+    private State state;
+
+    private NotificationCompat.Builder workTimerBuilder, shortBreakTimeBuilder, longBreakTimeBuilder;
 
     public NotificationManager(Context context) {
         this.context = context;
         manager = NotificationManagerCompat.from(context);
+        state = State.WORK;
+        createNotificationChannel();
 
-        builder = new NotificationCompat.Builder(this.context, CHANNEL_ID)
-                .setContentTitle("Timer")
-                .setContentText("25:00")
-//                .setContentText(context.getString(R.string.))
-                .setSmallIcon(R.drawable.ic_launcher_foreground)
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+        workTimerBuilder = NotificationBuilders.getWorkTimerNotificationBuilder(context, CHANNEL_ID);
+        shortBreakTimeBuilder = NotificationBuilders.getShortBreakTimerNotificationBuilder(context, CHANNEL_ID);
+        longBreakTimeBuilder = NotificationBuilders.getLongBreakTimerNotificationBuilder(context, CHANNEL_ID);
     }
 
-    public void showNotification() {
-        manager.notify(123, getNotification());
+    public void notify(String newTime) {
+        if (state == State.WORK) {
+            workTimerBuilder.setContentText(newTime);
+            manager.notify(1, workTimerBuilder.build());
+        } else if (state == State.SHORT_BREAK) {
+            shortBreakTimeBuilder.setContentText(newTime);
+            manager.notify(1, shortBreakTimeBuilder.build());
+        } else if (state == State.LONG_BREAK) {
+            longBreakTimeBuilder.setContentText(newTime);
+            manager.notify(1, longBreakTimeBuilder.build());
+        }
     }
 
-    public void updateNotification(String newText) {
-
-        builder.setContentText(newText);
-
-        manager.notify(123, getNotification());
-
-    }
-
-    private Notification getNotification() {
-        return this.builder.build();
+    public void setState(State state) {
+        if (state == State.WORK)
+            state = State.WORK;
+        if (state == State.SHORT_BREAK)
+            state = State.SHORT_BREAK;
+        if (state == State.LONG_BREAK)
+            state = State.LONG_BREAK;
     }
 
 

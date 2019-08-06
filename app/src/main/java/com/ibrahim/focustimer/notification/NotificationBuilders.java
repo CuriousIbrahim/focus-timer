@@ -14,7 +14,9 @@ public final class NotificationBuilders {
                 .setContentTitle("Timer | Work")
                 .setContentText("25:00")
                 .setSmallIcon(R.drawable.ic_launcher_foreground)
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setOnlyAlertOnce(true)
+                .setOngoing(true);
 
         return builder;
 
@@ -26,7 +28,9 @@ public final class NotificationBuilders {
                 .setContentTitle("Timer | Short Break")
                 .setContentText("5:00")
                 .setSmallIcon(R.drawable.ic_launcher_foreground)
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setOnlyAlertOnce(true)
+                .setOngoing(true);
 
         return builder;
 
@@ -38,7 +42,9 @@ public final class NotificationBuilders {
                 .setContentTitle("Timer | Long Break")
                 .setContentText("20:00")
                 .setSmallIcon(R.drawable.ic_launcher_foreground)
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+                .setPriority(NotificationCompat.PRIORITY_MAX)
+                .setOnlyAlertOnce(true)
+                .setOngoing(true);
 
         return builder;
 
