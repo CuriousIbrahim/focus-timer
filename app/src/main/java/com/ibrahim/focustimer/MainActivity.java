@@ -7,8 +7,6 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.ibrahim.focustimer.notification.NotificationManager;
-
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,16 +17,9 @@ public class MainActivity extends AppCompatActivity {
 
     private MainActivityViewModel viewModel;
 
-    NotificationManager notificationManager;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        notificationManager = new NotificationManager(this);
-
-
-//        notificationManager.showNotification();
 
         setContentView(R.layout.activity_main);
 
@@ -41,11 +32,6 @@ public class MainActivity extends AppCompatActivity {
         viewModel.getTimeLeft().observe(this, timeLeft -> {
             Log.d("MainActivity", String.format("Time left: %s", timeLeft));
             timeTextView.setText(timeLeft);
-            notificationManager.notify(timeLeft);
-        });
-
-        viewModel.getState().observe(this, state -> {
-            notificationManager.setState(state);
         });
 
         viewModel.getOnResume().observe(this, (onResume) -> {
