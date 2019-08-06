@@ -18,6 +18,7 @@ public class MainActivityViewModel extends ViewModel {
 
     private MutableLiveData<String> timeLeft;
     private MutableLiveData<Boolean> onResume;
+    private MutableLiveData<Boolean> waitingOnUserToContinue;
 
     private final PomodoroCycle pomodoroCycle;
 
@@ -34,6 +35,18 @@ public class MainActivityViewModel extends ViewModel {
 
         time = C.DEFAULT_WORK_TIME;
 
+    }
+
+    public LiveData<Boolean> getWaitingOnUserToContinue() {
+        if (waitingOnUserToContinue == null) {
+            waitingOnUserToContinue = new MutableLiveData<>();
+        }
+
+        return waitingOnUserToContinue;
+    }
+
+    public void setWaitingOnUserToContinueToFalse() {
+        waitingOnUserToContinue.setValue(false);
     }
 
     public LiveData<String> getTimeLeft() {
@@ -139,6 +152,7 @@ public class MainActivityViewModel extends ViewModel {
             time = getTimeBasedOnPomodoroState();
             timeLeft.setValue(TimeUtil.millisToString(time));
             onResume.setValue(false);
+            waitingOnUserToContinue.setValue(true);
         }
     }
 
