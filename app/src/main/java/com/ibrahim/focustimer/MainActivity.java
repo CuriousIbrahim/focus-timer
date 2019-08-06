@@ -1,6 +1,7 @@
 package com.ibrahim.focustimer;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,6 +15,7 @@ import com.ibrahim.focustimer.notification.NotificationManager;
 public class MainActivity extends AppCompatActivity {
 
     private TextView timeTextView;
+    private TextView workText, shortBreakText, longBreakText;
 
     private Button startAndStopToggle;
     private Button stop;
@@ -33,6 +35,11 @@ public class MainActivity extends AppCompatActivity {
         notificationManager = new NotificationManager(this);
 
         timeTextView = findViewById(R.id.time);
+
+        workText = findViewById(R.id.workText);
+        shortBreakText = findViewById(R.id.shortBreakText);
+        longBreakText = findViewById(R.id.longBreakWork);
+
         startAndStopToggle = findViewById(R.id.startAndStopToggle);
         stop = findViewById(R.id.stop);
 
@@ -53,6 +60,18 @@ public class MainActivity extends AppCompatActivity {
 
         viewModel.getState().observe(this, state-> {
             this.state = state;
+
+            workText.setTypeface(null, Typeface.NORMAL);
+            shortBreakText.setTypeface(null, Typeface.NORMAL);
+            longBreakText.setTypeface(null, Typeface.NORMAL);
+
+            if (state == State.WORK)
+                workText.setTypeface(null, Typeface.BOLD);
+            else if (state == State.SHORT_BREAK)
+                shortBreakText.setTypeface(null, Typeface.BOLD);
+            else if (state == State.LONG_BREAK)
+                longBreakText.setTypeface(null, Typeface.BOLD);
+
         });
 
         viewModel.getWaitingOnUserToContinue().observe(this, waitingOnUser -> {
