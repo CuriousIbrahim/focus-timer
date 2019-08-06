@@ -29,18 +29,21 @@
 
     <TextView
         android:id="@+id/time"
-        android:layout_width="276dp"
-        android:layout_height="134dp"
+        android:layout_width="408dp"
+        android:layout_height="224dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="168dp"
+        android:layout_marginBottom="156dp"
+        android:gravity="center"
         android:text="25:00"
-        android:textSize="100sp"
-        app:layout_constraintBottom_toTopOf="@+id/startAndStopToggle"
+        android:textSize="150sp"
+        app:flow_horizontalAlign="start"
+        app:flow_verticalAlign="top"
+        app:layout_constraintBottom_toTopOf="@+id/next"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.538"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -49,29 +52,39 @@
         android:layout_height="42dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="108dp"
         android:text="Stop"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.393"
-        app:layout_constraintStart_toEndOf="@+id/startAndStopToggle"
-        app:layout_constraintTop_toTopOf="@+id/startAndStopToggle"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintEnd_toStartOf="@+id/startAndStopToggle"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="565dp" />
 
     <Button
         android:id="@+id/startAndStopToggle"
         android:layout_width="105dp"
         android:layout_height="42dp"
-        android:layout_marginStart="152dp"
-        android:layout_marginLeft="152dp"
-        android:layout_marginBottom="108dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="124dp"
         android:text="Start"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/time"
+        app:layout_constraintVertical_bias="1.0"
+        tools:layout_editor_absoluteX="153dp" />
+
+    <Button
+        android:id="@+id/next"
+        android:layout_width="105dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="Next"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/startAndStopToggle"
+        tools:layout_editor_absoluteY="565dp" />
 
 </android.support.constraint.ConstraintLayout>
