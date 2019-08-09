@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Button startAndStopToggle;
     private Button stop;
+    private Button next;
 
     private MainActivityViewModel viewModel;
 
@@ -42,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
         startAndStopToggle = findViewById(R.id.startAndStopToggle);
         stop = findViewById(R.id.stop);
+        next = findViewById(R.id.next);
 
         viewModel = ViewModelProviders.of(this).get(MainActivityViewModel.class);
 
@@ -99,5 +101,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         stop.setOnClickListener((a) -> viewModel.stopTime());
+
+        next.setOnClickListener(l -> viewModel.skipState());
     }
 }

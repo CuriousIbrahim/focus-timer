@@ -99,6 +99,22 @@ public class MainActivityViewModel extends ViewModel {
         }
     }
 
+    private void nextState() {
+        getCountDownTimer().reset();
+        pomodoroCycle.next();
+        time = getTimeBasedOnPomodoroState();
+        timeLeft.setValue(TimeUtil.millisToString(time));
+        onResume.setValue(false);
+        waitingOnUserToContinue.setValue(true);
+        updateState();
+    }
+
+    public void skipState() {
+        nextState();
+        startTime();
+    }
+
+
     public void startTime() {
 
         onResume.setValue(true);
@@ -152,13 +168,14 @@ public class MainActivityViewModel extends ViewModel {
 
         @Override
         public void onMyFinish() {
-            getCountDownTimer().reset();
-            pomodoroCycle.next();
-            time = getTimeBasedOnPomodoroState();
-            timeLeft.setValue(TimeUtil.millisToString(time));
-            onResume.setValue(false);
-            waitingOnUserToContinue.setValue(true);
-            updateState();
+//            getCountDownTimer().reset();
+//            pomodoroCycle.next();
+//            time = getTimeBasedOnPomodoroState();
+//            timeLeft.setValue(TimeUtil.millisToString(time));
+//            onResume.setValue(false);
+//            waitingOnUserToContinue.setValue(true);
+//            updateState();
+            nextState();
         }
     }
 
