@@ -16,5 +16,5 @@ take 30 minutes of break. Then, repeat.
   - [x] when activity is visible, **Implemented on August 6, 2019**
   - [ ] and not visible.
 - [ ] Allow user to customize how much they want to work, short rest, and long rest for.
-- [ ] Give ability to skip a timer - ex. skip short break timer
+- [x] Give ability to skip a timer - ex. skip short break timer. **Implemented on August 9, 2019**
 
