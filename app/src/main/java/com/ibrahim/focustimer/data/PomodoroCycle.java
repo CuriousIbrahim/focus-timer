@@ -30,6 +30,15 @@ public class PomodoroCycle {
         }
     }
 
+    public void reset() {
+        workCount = 0;
+        currentState = State.WORK;
+    }
+
+    public State getCurrentState() {
+        return currentState;
+    }
+
     public boolean isWorkState() {
         return currentState == State.WORK;
     }

@@ -10,6 +10,8 @@ import com.ibrahim.focustimer.data.ExtendedCountDownTimer;
 import com.ibrahim.focustimer.data.PomodoroCycle;
 import com.ibrahim.focustimer.util.TimeUtil;
 
+import java.sql.Time;
+
 public class MainActivityViewModel extends ViewModel {
 
     private final ExtendedCountDownTimer workCountDownTimer;
@@ -145,8 +147,10 @@ public class MainActivityViewModel extends ViewModel {
 
     public void stopTime() {
         getCountDownTimer().reset();
-        timeLeft.setValue(TimeUtil.millisToString(getCountDownTimer().getMillisLeft()));
+        timeLeft.setValue(TimeUtil.millisToString(C.DEFAULT_WORK_TIME));
         onResume.setValue(false);
+        pomodoroCycle.reset();
+        state.setValue(pomodoroCycle.getCurrentState());
     }
 
     private void pauseTime() {
