@@ -105,7 +105,6 @@ public class MainActivityViewModel extends ViewModel {
         time = getTimeBasedOnPomodoroState();
         timeLeft.setValue(TimeUtil.millisToString(time));
         onResume.setValue(false);
-        waitingOnUserToContinue.setValue(true);
         updateState();
     }
 
@@ -168,14 +167,8 @@ public class MainActivityViewModel extends ViewModel {
 
         @Override
         public void onMyFinish() {
-//            getCountDownTimer().reset();
-//            pomodoroCycle.next();
-//            time = getTimeBasedOnPomodoroState();
-//            timeLeft.setValue(TimeUtil.millisToString(time));
-//            onResume.setValue(false);
-//            waitingOnUserToContinue.setValue(true);
-//            updateState();
             nextState();
+            waitingOnUserToContinue.setValue(true);
         }
     }
 
