@@ -12,7 +12,6 @@ import android.widget.TextView;
 
 import com.ibrahim.focustimer.broadcastreciever.NotificationRequestBroadcastReceiver;
 import com.ibrahim.focustimer.constant.State;
-import com.ibrahim.focustimer.notification.NotificationManager;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -26,23 +25,13 @@ public class MainActivity extends AppCompatActivity {
 
     private MainActivityViewModel viewModel;
 
-    private NotificationManager notificationManager;
-
-    private State state;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
 
-        // Setup Broadcast Receiver
-        BroadcastReceiver br = new NotificationRequestBroadcastReceiver();
-        IntentFilter filter = new IntentFilter();
-        filter.addAction("com.ibrahim.NOTIFY");
-        registerReceiver(br, filter);
-
-        notificationManager = new NotificationManager(this);
+        setUpBroadcastReceiver();
 
         timeTextView = findViewById(R.id.time);
 
@@ -71,8 +60,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         viewModel.getState().observe(this, state-> {
-            this.state = state;
-
             workText.setTypeface(null, Typeface.NORMAL);
             shortBreakText.setTypeface(null, Typeface.NORMAL);
             longBreakText.setTypeface(null, Typeface.NORMAL);
@@ -87,21 +74,24 @@ public class MainActivity extends AppCompatActivity {
         });
 
         viewModel.getWaitingOnUserToContinue().observe(this, waitingOnUser -> {
-
             if (waitingOnUser == true) {
                 viewModel.setWaitingOnUserToContinueToFalse();
-
             }
-
         });
 
         startAndStopToggle.setOnClickListener((a) -> {
             viewModel.toggleTime();
-//            viewModel.setWaitingOnUserToContinueToFalse();
         });
 
         stop.setOnClickListener((a) -> viewModel.stopTime());
 
         next.setOnClickListener(l -> viewModel.skipState());
+    }
+
+    private void setUpBroadcastReceiver() {
+        BroadcastReceiver br = new NotificationRequestBroadcastReceiver();
+        IntentFilter filter = new IntentFilter();
+        filter.addAction("com.ibrahim.NOTIFY");
+        registerReceiver(br, filter);
     }
 }
