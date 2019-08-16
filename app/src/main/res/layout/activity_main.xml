@@ -40,8 +40,6 @@
         android:gravity="center"
         android:text="25:00"
         android:textSize="150sp"
-        app:flow_horizontalAlign="start"
-        app:flow_verticalAlign="top"
         app:layout_constraintBottom_toTopOf="@+id/next"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.538"
