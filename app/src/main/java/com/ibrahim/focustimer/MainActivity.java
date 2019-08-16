@@ -1,13 +1,18 @@
 package com.ibrahim.focustimer;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.BroadcastReceiver;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Typeface;
+import android.net.ConnectivityManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.ibrahim.focustimer.broadcastreciever.NotificationRequestBroadcastReceiver;
 import com.ibrahim.focustimer.constant.State;
 import com.ibrahim.focustimer.notification.NotificationManager;
 
@@ -32,6 +37,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
+
+        // Setup Broadcast Receiver
+        BroadcastReceiver br = new NotificationRequestBroadcastReceiver();
+        IntentFilter filter = new IntentFilter();
+        filter.addAction("com.ibrahim.NOTIFY");
+        registerReceiver(br, filter);
 
         notificationManager = new NotificationManager(this);
 
@@ -90,7 +101,12 @@ public class MainActivity extends AppCompatActivity {
                 else if (state == State.LONG_BREAK)
                     text = "Long break timer finished";
 
-                notificationManager.notify(text);
+
+                Intent intent = new Intent();
+                intent.setAction("com.ibrahim.NOTIFY");
+                intent.putExtra("message", text);
+                sendBroadcast(intent);
+
             }
 
         });
