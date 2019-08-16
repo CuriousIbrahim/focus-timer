@@ -2,10 +2,8 @@ package com.ibrahim.focustimer;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.BroadcastReceiver;
-import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Typeface;
-import android.net.ConnectivityManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -57,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
         next = findViewById(R.id.next);
 
         viewModel = ViewModelProviders.of(this).get(MainActivityViewModel.class);
+        viewModel.setContext(this);
 
         viewModel.getTimeLeft().observe(this, timeLeft -> {
             Log.d("MainActivity", String.format("Time left: %s", timeLeft));
@@ -91,21 +90,6 @@ public class MainActivity extends AppCompatActivity {
 
             if (waitingOnUser == true) {
                 viewModel.setWaitingOnUserToContinueToFalse();
-
-                String text = "Timer finished";
-
-                if (state == State.WORK)
-                    text = "Work timer finished";
-                else if (state == State.SHORT_BREAK)
-                    text = "Short break timer finished";
-                else if (state == State.LONG_BREAK)
-                    text = "Long break timer finished";
-
-
-                Intent intent = new Intent();
-                intent.setAction("com.ibrahim.NOTIFY");
-                intent.putExtra("message", text);
-                sendBroadcast(intent);
 
             }
 

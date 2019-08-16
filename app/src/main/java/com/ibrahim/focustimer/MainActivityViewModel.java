@@ -3,6 +3,8 @@ package com.ibrahim.focustimer;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
+import android.content.Context;
+import android.content.Intent;
 
 import com.ibrahim.focustimer.constant.C;
 import com.ibrahim.focustimer.constant.State;
@@ -10,9 +12,10 @@ import com.ibrahim.focustimer.data.ExtendedCountDownTimer;
 import com.ibrahim.focustimer.data.PomodoroCycle;
 import com.ibrahim.focustimer.util.TimeUtil;
 
-import java.sql.Time;
 
 public class MainActivityViewModel extends ViewModel {
+
+    private Context context;
 
     private final ExtendedCountDownTimer workCountDownTimer;
     private final ExtendedCountDownTimer shortBreakCountDownTimer;
@@ -31,6 +34,7 @@ public class MainActivityViewModel extends ViewModel {
     private boolean started;
 
     public MainActivityViewModel() {
+
         pomodoroCycle = new PomodoroCycle();
 
         workCountDownTimer = new MyCountDownTimer(C.DEFAULT_WORK_TIME, C.SECOND);
@@ -39,6 +43,10 @@ public class MainActivityViewModel extends ViewModel {
 
         time = C.DEFAULT_WORK_TIME;
 
+    }
+
+    public void setContext(Context context) {
+        this.context = context;
     }
 
     public LiveData<Boolean> getWaitingOnUserToContinue() {
@@ -158,6 +166,26 @@ public class MainActivityViewModel extends ViewModel {
         onResume.setValue(false);
     }
 
+    private String getTextForNotificationMessage() {
+        String text = "Timer finished";
+
+        if (state.getValue() == State.WORK)
+            text = "Work timer finished";
+        else if (state.getValue() == State.SHORT_BREAK)
+            text = "Short break timer finished";
+        else if (state.getValue() == State.LONG_BREAK)
+            text = "Long break timer finished";
+
+        return text;
+    }
+
+    private void notifyUser() {
+        Intent intent = new Intent();
+        intent.setAction("com.ibrahim.NOTIFY");
+        intent.putExtra("message", getTextForNotificationMessage());
+        context.sendBroadcast(intent);
+    }
+
     class MyCountDownTimer extends ExtendedCountDownTimer {
 
         MyCountDownTimer(long millisInFuture, long countDownInterval) {
@@ -173,6 +201,7 @@ public class MainActivityViewModel extends ViewModel {
         public void onMyFinish() {
             nextState();
             waitingOnUserToContinue.setValue(true);
+            notifyUser();
         }
     }
 
