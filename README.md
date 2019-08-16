@@ -12,9 +12,9 @@ take 30 minutes of break. Then, repeat.
       Repeat for another three times; however, on the fourth time, instead of a 5 minute break - give
       a 30 minute break. **Implemented on June 3, 2019**
 - [x] Timer must be operational in the background. **Implemented on June 20, 2019. Note: Seems to work in the background without any extra code**
-- [x] A notification to notify the user that the timer is finished
+- [x] A notification to notify the user that the timer is finished **Fully implemented on August 16, 2019**
   - [x] when activity is visible, **Implemented on August 6, 2019**
-  - [x] and not visible.
+  - [x] and not visible. **Implemented on August 16, 2019**
 - [ ] Allow user to customize how much they want to work, short rest, and long rest for.
 - [x] Give ability to skip a timer - ex. skip short break timer. **Implemented on August 9, 2019**
 
