@@ -1,4 +1,4 @@
-package com.ibrahim.focustimer;
+package com.ibrahim.focustimer.activity;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.BroadcastReceiver;
@@ -10,6 +10,8 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.ibrahim.focustimer.viewmodel.MainActivityViewModel;
+import com.ibrahim.focustimer.R;
 import com.ibrahim.focustimer.broadcastreciever.NotificationRequestBroadcastReceiver;
 import com.ibrahim.focustimer.constant.State;
 

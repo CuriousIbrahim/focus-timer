@@ -1,4 +1,4 @@
-package com.ibrahim.focustimer;
+package com.ibrahim.focustimer.viewmodel;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
