@@ -80,8 +80,10 @@ public class MainActivityViewModel extends ViewModel {
     }
 
     public LiveData<State> getState() {
-        if (state == null)
+        if (state == null) {
             state = new MutableLiveData<>();
+            state.setValue(State.WORK);
+        }
 
         return state;
     }
