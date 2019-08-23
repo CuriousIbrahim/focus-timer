@@ -49,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
         viewModel.setContext(this);
 
         viewModel.getTimeLeft().observe(this, timeLeft -> {
-            Log.d("MainActivity", String.format("Time left: %s", timeLeft));
             timeTextView.setText(timeLeft);
         });
 

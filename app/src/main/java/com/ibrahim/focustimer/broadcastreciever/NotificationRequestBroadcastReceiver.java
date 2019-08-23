@@ -16,7 +16,4 @@ public class NotificationRequestBroadcastReceiver extends BroadcastReceiver {
         notificationManager.notify(intent.getStringExtra("message"));
     }
 
-
-
-
 }
