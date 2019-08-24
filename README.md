@@ -8,7 +8,6 @@ take 30 minutes of break. Then, repeat.
 ## Todos
 
 - Add screenshots to README.md
-- Find icon for app
 - Publish app
 
 ### Features to Implement
