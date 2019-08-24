@@ -1,12 +1,16 @@
 package com.ibrahim.focustimer.notification;
 
 import android.app.NotificationChannel;
+import android.app.PendingIntent;
+import android.app.TaskStackBuilder;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 
 import com.ibrahim.focustimer.R;
+import com.ibrahim.focustimer.activity.MainActivity;
 
 public class NotificationManager {
 
@@ -46,10 +50,19 @@ public class NotificationManager {
     }
 
     private NotificationCompat.Builder getNotificationBuilder() {
+
+//        Intent intent = new Intent(context, MainActivity.class);
+//
+//        TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
+//        stackBuilder.addNextIntentWithParentStack(intent);
+//
+//        PendingIntent pendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_NO_CREATE);
+
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
                 .setContentTitle("Focus Timer")
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 .setSmallIcon(R.drawable.work_notification_icon);
+//                .setContentIntent(pendingIntent);
 
         return builder;
     }
