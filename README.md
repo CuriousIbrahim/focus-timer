@@ -5,9 +5,18 @@ A user will do focused work for 25 minutes, and then take 5 minutes of break - t
 3 more times; however, on the forth cycle, instead of 5 minutes of break, the user will
 take 30 minutes of break. Then, repeat.
 
+## Screenshots
+
+![Screenshot 1][screenshot1]
+ 
+![Screenshot 2][screenshot2] 
+
+![Screenshot 3][screenshot3] 
+
+![Screenshot 4][screenshot4] 
+
 ## Todos
 
-- Add screenshots to README.md
 - Publish app
 
 ### Features to Implement
@@ -16,3 +25,9 @@ take 30 minutes of break. Then, repeat.
 should take you to the main activity. 
 - Allow user to customize how much they want to work, short rest, and 
 long rest for.
+
+
+[screenshot1]: ./screenshots/screenshot1.png
+[screenshot2]: ./screenshots/screenshot2.png
+[screenshot3]: ./screenshots/screenshot3.png
+[screenshot4]: ./screenshots/screenshot4.png
