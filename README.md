@@ -26,8 +26,11 @@ should take you to the main activity.
 - Allow user to customize how much they want to work, short rest, and 
 long rest for.
 
-
 [screenshot1]: ./screenshots/screenshot1.png
 [screenshot2]: ./screenshots/screenshot2.png
 [screenshot3]: ./screenshots/screenshot3.png
 [screenshot4]: ./screenshots/screenshot4.png
+
+## License
+
+Apache License Version 2.0
