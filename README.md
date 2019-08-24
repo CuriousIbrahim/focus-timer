@@ -5,8 +5,12 @@ A user will do focused work for 25 minutes, and then take 5 minutes of break - t
 3 more times; however, on the forth cycle, instead of 5 minutes of break, the user will
 take 30 minutes of break. Then, repeat.
 
+## Todos
+
+- Add screenshots to README.md
+- Find icon for app
+- Publish app
+
 ## Features to Implement
 
-### Other Features
-
-- [ ] Allow user to customize how much they want to work, short rest, and long rest for.
+- Allow user to customize how much they want to work, short rest, and long rest for.
