@@ -49,7 +49,7 @@ public class NotificationManager {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
                 .setContentTitle("Focus Timer")
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                .setSmallIcon(R.drawable.work_icon_background);
+                .setSmallIcon(R.drawable.work_notification_icon);
 
         return builder;
     }
