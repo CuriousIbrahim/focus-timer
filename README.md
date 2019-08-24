@@ -11,6 +11,9 @@ take 30 minutes of break. Then, repeat.
 - Find icon for app
 - Publish app
 
-## Features to Implement
+### Features to Implement
 
-- Allow user to customize how much they want to work, short rest, and long rest for.
+- When clicking on notification informing you that timer is finished, it
+should take you to the main activity. 
+- Allow user to customize how much they want to work, short rest, and 
+long rest for.
