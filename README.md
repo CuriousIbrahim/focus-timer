@@ -7,16 +7,8 @@ take 30 minutes of break. Then, repeat.
 
 ## Screenshots
 
-| ![Screenshot 1][screenshot1] | ![Screenshot 2][screenshot2]  | ![Screenshot 3][screenshot3] | [Screenshot 4][screenshot4] |
-| ---------------------------- | ----------------------------- | ---------------------------- | --------------------------- |
-
-![Screenshot 1][screenshot1]
- 
-![Screenshot 2][screenshot2] 
-
-![Screenshot 3][screenshot3] 
-
-![Screenshot 4][screenshot4] 
+| ![Screenshot 1][screenshot1] | ![Screenshot 2][screenshot2]  | ![Screenshot 3][screenshot3] | ![Screenshot 4][screenshot4] |
+| ---------------------------- | ----------------------------- | ---------------------------- | ---------------------------- |
 
 ## Todos
 
